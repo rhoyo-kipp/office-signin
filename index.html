@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Office Sign-In</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: block;
+    }
+  </style>
+  <script>
+    let iframeLoadCount = 0;
+
+    function onIframeLoad() {
+      iframeLoadCount++;
+
+      // loadCount = 1 is the initial Google Form page load.
+      // loadCount > 1 triggers when the user clicks "Submit" inside the iframe.
+      if (iframeLoadCount > 1) {
+        // Wait 3 seconds to let the visitor see the "Thank You" message, then reload the page
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Replace the src URL below with your actual Google Form URL -->
+  <iframe 
+    src="https://forms.gle/YtYNtcxtrtYbnYHF9" 
+    onload="onIframeLoad()">
+  </iframe>
+</body>
+</html>
